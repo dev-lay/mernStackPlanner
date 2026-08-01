@@ -1,0 +1,48 @@
+@import "tailwindcss";
+@plugin "daisyui" {
+  themes:
+    light --default,
+    dark --prefersdark,
+    dark;
+}
+html,
+body {
+  min-height: 100vh;
+  /*background: rgb(17, 17, 40);
+  color: white;*/
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  font-family: "Times New Roman", Times, serif;
+}
+body {
+  width: 100vw;
+}
+/* index.css */
+
+@import "react-toastify/dist/ReactToastify.css";
+.Toastify__toast {
+  min-height: unset !important;
+  padding: 10px 14px !important;
+  font-size: 13px !important;
+  border-radius: 8px !important;
+  min-width: 200px !important;
+  max-width: 300px !important;
+}
+.Toastify__toast--error {
+  background: oklch(73.28% 0.12614 61.669) !important; /* daisyui error bg */
+  color: oklch(
+    95.519% 0.0421 81.112 / 0.893
+  ) !important; /* daisyui error text */
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+.Toastify__toast--success {
+  background: oklch(65.498% 0.14658 143.699) !important;
+  color: oklch(93.13% 0.054 155.03) !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+.Toastify__toast-icon {
+  display: none !important;
+}
