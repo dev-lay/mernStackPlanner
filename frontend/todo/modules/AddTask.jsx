@@ -4,6 +4,7 @@ import Task from "../modules/Task";
 import axios from "axios";
 import { toast } from "react-toastify";
 export default function AddTask() {
+  const API_URL = import.meta.env.VITE_API_URL;
   const col = [
     { name: "orange", bg: "bg-orange-500", text: "text-orange-500" },
     { name: "blue", bg: "bg-blue-500", text: "text-blue-500" },
@@ -24,7 +25,6 @@ export default function AddTask() {
     }
   };
   const [taskName, setTaskName] = useState("");
-  const API_URL = "http://localhost:3000/api/tasks";
   const [clickedColor, setClickedColor] = useState({
     name: "gray",
     bg: "bg-gray-400",
@@ -43,11 +43,17 @@ export default function AddTask() {
       });
     }
     try {
-      const response = await axios.post(API_URL, {
-        task: taskName,
-        taskDone: false,
-        color: clickedColor,
-      });
+      const response = await axios.post(
+        API_URL,
+        {
+          task: taskName,
+          taskDone: false,
+          color: clickedColor,
+        },
+        {
+          withCredentials: true,
+        },
+      );
       setTasks([...tasks, response.data]);
       setTaskName("");
       toast.success("Task is added successfully");
