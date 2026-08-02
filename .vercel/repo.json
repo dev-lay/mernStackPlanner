@@ -1,0 +1,11 @@
+{
+  "remoteName": "origin",
+  "projects": [
+    {
+      "id": "prj_rDorNrvK1RKCbgdH280tXlOb4XIA",
+      "name": "mern-stack-planner-",
+      "directory": "frontend/todo",
+      "orgId": "team_NCuyvAAnUI5pb9GQpfIQ5nEt"
+    }
+  ]
+}
