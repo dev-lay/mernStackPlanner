@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useContext } from "react";
 import { AuthContext } from "../src/Context";
+import logoGif from "../src/assets/GIPHY Stickers.gif";
 import { toast } from "react-toastify";
 export default function Signup() {
   const navigate = useNavigate();
@@ -44,7 +45,7 @@ export default function Signup() {
       <div className="w-full max-w-md">
         <div className="text-center mb-6 flex content-center items-center flex-col">
           <img
-            src="../assets/GIPHY Stickers.gif"
+            src={logoGif}
             alt="logo"
             className="z-10"
             width="100"
