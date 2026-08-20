@@ -1,10 +1,11 @@
 import { FaRegCircle } from "react-icons/fa6";
-import { useState } from "react";
+import { useContext } from "react";
 import Task from "../modules/Task";
+import { AuthContext } from "../src/Context";
 import axios from "axios";
 import { toast } from "react-toastify";
 export default function AddTask() {
-  const API_URL = import.meta.env.VITE_API_URL;
+  const API_URL = `${import.meta.env.VITE_API_URL}/api/tasks`;
   const col = [
     { name: "orange", bg: "bg-orange-500", text: "text-orange-500" },
     { name: "blue", bg: "bg-blue-500", text: "text-blue-500" },
@@ -15,7 +16,7 @@ export default function AddTask() {
   ];
   const fetchTasks = async () => {
     try {
-      const res = await axios.get(API_URL);
+      const res = await axios.get(API_URL, { withCredentials: true });
       const tasks = res.data;
       if (tasks) {
         setTasks(tasks);
@@ -24,13 +25,15 @@ export default function AddTask() {
       console.error(error);
     }
   };
-  const [taskName, setTaskName] = useState("");
-  const [clickedColor, setClickedColor] = useState({
-    name: "gray",
-    bg: "bg-gray-400",
-    text: "text-gray-400",
-  });
-  const [tasks, setTasks] = useState([]);
+  const {
+    taskName,
+    setTaskName,
+    clickedColor,
+    setClickedColor,
+    tasks,
+    setTasks,
+  } = useContext(AuthContext);
+  //Add task
   const handleAddTask = async () => {
     if (!taskName) {
       setClickedColor({
@@ -91,7 +94,7 @@ export default function AddTask() {
               <FaRegCircle
                 onClick={() => setClickedColor(color)}
                 className={`${color.bg} ${color.text} cursor-pointer rounded-full m-1 ${
-                  clickedColor === color
+                  clickedColor.name === color.name
                     ? "border-2 border-white"
                     : "border-none"
                 }`}

@@ -1,8 +1,9 @@
 const express = require("express");
 require("dotenv").config();
-const mongoose = require("mongoose");
+//const mongoose = require("mongoose");
 const cors = require("cors");
 const routeTask = require("./routes/task.route");
+const routeAuth = require("./routes/user.route");
 const connectDB = require("./db/db");
 const PORT = process.env.PORT;
 const FRONTEND_URL = process.env.FRONTEND_URL;
@@ -23,3 +24,4 @@ app.get("/", (req, res) => {
 });
 app.use(express.json());
 app.use("/api/tasks", routeTask);
+app.use("/api/auth", routeAuth);

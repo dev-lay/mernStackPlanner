@@ -1,25 +1,30 @@
 @import "tailwindcss";
+@plugin "daisyui";
 @plugin "daisyui" {
   themes:
     light --default,
     dark --prefersdark,
-    dark;
+    abyss;
 }
 html,
-body {
+body,
+#root {
+  width: 100vw;
   min-height: 100vh;
-  /*background: rgb(17, 17, 40);
-  color: white;*/
-  display: grid;
-  align-items: center;
-  justify-content: center;
   font-family: "Times New Roman", Times, serif;
 }
 body {
-  width: 100vw;
+  display: flex;
+  justify-content: center;
 }
-/* index.css */
-
+#root {
+  width: 70%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
 @import "react-toastify/dist/ReactToastify.css";
 .Toastify__toast {
   min-height: unset !important;
