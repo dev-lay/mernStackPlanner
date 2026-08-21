@@ -9,8 +9,7 @@ const logout = async (req, res) => {
     res.clearCookie("refreshToken", {
       httpOnly: true, //XSS script
       secure: true,
-      sameSite: "strict", //CSRF protection
-      maxAge: 0, // FIX: Forces immediate deletion
+      maxAge: 0, // Forces immediate deletion
     });
     res.status(200).json({ message: "Cookies cleared successfully" });
   } catch (error) {
@@ -48,7 +47,6 @@ const verifyRefreshToken = async (req, res) => {
     res.cookie("refreshToken", newRefreshToken, {
       httpOnly: true, //XSS script
       secure: true,
-      sameSite: "strict", //CSRF protection
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     const user = await User.findById(payload.id);
@@ -82,7 +80,7 @@ const login = async (req, res) => {
     const accessToken = jwt.sign(
       { id: user._id },
       process.env.JWT_ACCESS_SECRET,
-      { expiresIn: "1m" },
+      { expiresIn: "15m" },
     );
     //refresh token
     const tokenId = uuidv4(); //unique keys generator
@@ -96,8 +94,6 @@ const login = async (req, res) => {
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true, //XSS script
       secure: true,
-      sameSite: "strict", //CSRF protection
-      //maxAge: 60,
       maxAge: 7 * 24 * 60 * 60 * 1000,
     });
     res.json({ accessToken });
