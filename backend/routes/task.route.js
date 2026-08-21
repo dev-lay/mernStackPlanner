@@ -1,7 +1,7 @@
-const express = require("express");
+import express from "express";
 const router = express.Router(); //router is an app instace in order to tidy up stufff yes it is same as app.use
-const verifyAccessToken = require("../middlewares/authMiddleware.js");
-const {
+import verifyAccessToken from "../middlewares/authMiddleware.js";
+import {
   getAllTasks,
   createNewTask,
   deleteTask,
@@ -9,8 +9,7 @@ const {
   getTask,
   deleteAll,
   deleteAccount,
-} = require("../controllers/task.controller.js");
-//const { router } = require("./user.route.js");
+} from "../controllers/task.controller.js";
 router.use(verifyAccessToken);
 //Routes
 router.delete("/delete", deleteAccount);
@@ -23,6 +22,6 @@ router.get("/:id", getTask);
 //Get all the Tasks home router
 router.get("/", getAllTasks);
 //create a new task
-router.post("/", verifyAccessToken, createNewTask);
+router.post("/", createNewTask);
 router.delete("/", deleteAll);
-module.exports = router;
+export default router;

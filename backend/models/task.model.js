@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const TaskSchema = mongoose.Schema(
   {
     userid: {
@@ -12,7 +12,7 @@ const TaskSchema = mongoose.Schema(
       required: true,
     },
     task: {
-      type: "string",
+      type: "String",
       required: true,
     },
     taskDone: {
@@ -37,4 +37,4 @@ const TaskSchema = mongoose.Schema(
 );
 const Task = mongoose.model("Task", TaskSchema);
 
-module.exports = Task;
+export default Task;

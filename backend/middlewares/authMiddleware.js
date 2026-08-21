@@ -1,5 +1,5 @@
-const jwt = require("jsonwebtoken");
-const User = require("../models/user.model");
+import jwt from "jsonwebtoken";
+import User from "../models/user.model.js";
 const verifyAccessToken = async (req, res, next) => {
   let authHeader = req.headers.Authorization || req.headers.authorization;
   if (!authHeader || !authHeader.startsWith("Bearer"))
@@ -25,4 +25,4 @@ const verifyAccessToken = async (req, res, next) => {
     return res.status(401).json({ message: "Invalid or expired access token" });
   }
 };
-module.exports = verifyAccessToken;
+export default verifyAccessToken;

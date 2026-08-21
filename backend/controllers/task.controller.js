@@ -1,5 +1,5 @@
-const Task = require("../models/task.model");
-const User = require("../models/user.model");
+import Task from "../models/task.model.js";
+import User from "../models/user.model.js";
 //deleteAccount
 const deleteAccount = async (req, res) => {
   try {
@@ -101,7 +101,7 @@ const deleteAll = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-module.exports = {
+export {
   getAllTasks,
   createNewTask,
   deleteTask,

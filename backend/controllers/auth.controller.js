@@ -1,8 +1,7 @@
-const User = require("../models/user.model");
-const Tasks = require("../models/task.model");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const { v4: uuidv4 } = require("uuid");
+import User from "../models/user.model.js";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
+import { v4 as uuidv4 } from "uuid";
 //logout
 const logout = async (req, res) => {
   try {
@@ -129,4 +128,4 @@ const register = async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 };
-module.exports = { login, register, verifyRefreshToken, logout };
+export { login, register, verifyRefreshToken, logout };
