@@ -28,7 +28,7 @@ const verifyRefreshToken = async (req, res) => {
     const newAccessToken = jwt.sign(
       { id: payload.id },
       process.env.JWT_ACCESS_SECRET,
-      { expiresIn: "1m" },
+      { expiresIn: "15m" },
     );
     //console.log(payload.id);
     const tokenId = uuidv4();
